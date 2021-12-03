@@ -17,7 +17,7 @@ class App extends React.Component {
         />
 
         <TimePicker
-          time='01:00'
+          value='01:00'
           className='input-field'
           theme='Instagram'
           placeholder='Start Time'

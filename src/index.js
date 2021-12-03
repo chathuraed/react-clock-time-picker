@@ -11,7 +11,7 @@ import {
 
 export default class TimePicker extends Component {
   static propTypes = {
-    time: PropTypes.string,
+    value: PropTypes.string,
     theme: PropTypes.string,
     color1: PropTypes.string,
     headerColor: PropTypes.string,
@@ -28,8 +28,8 @@ export default class TimePicker extends Component {
   constructor(props) {
     super(props)
     let format12 = ''
-    if (this.props.time) {
-      const time = this.props.time.split(':')
+    if (this.props.value) {
+      const time = this.props.value.split(':')
       format12 = format24to12(Number(time[0]), Number(time[1]))
     }
     this.state = {
@@ -39,6 +39,7 @@ export default class TimePicker extends Component {
         format24: ''
       }
     }
+    console.log(props, this.state)
   }
 
   componentWillMount() {
@@ -49,10 +50,10 @@ export default class TimePicker extends Component {
     let format12 = ''
     let format24 = ''
 
-    if (nextProps.time) {
-      const temp = nextProps.time.split(':')
+    if (nextProps.value) {
+      const temp = nextProps.value.split(':')
       format12 = format24to12(Number(temp[0]), Number(temp[1]))
-      format24 = nextProps.time
+      format24 = nextProps.value
     }
 
     this.setState({
@@ -208,7 +209,7 @@ export default class TimePicker extends Component {
 
   handleFocus = (e) => {
     e.preventDefault()
-    const format24 = this.props.time
+    const format24 = this.props.value
     const { hour, minute, degree, selectedIndexDegree, isAmSelected } =
       this.getInitialConfig(format24)
     // hour = appendZero(Math.round(degree / 30) || '12'); //not sure why i added this
