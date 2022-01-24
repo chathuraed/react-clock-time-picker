@@ -39,7 +39,7 @@ export default class TimePicker extends Component {
         format24: ''
       }
     }
-    console.log(props, this.state)
+    // console.log(props, this.state)
   }
 
   componentWillMount() {
